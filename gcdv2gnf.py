@@ -1,14 +1,19 @@
 import os
-header = "GNF"
-folder = 'D:\Gravity Rush 2\gcdv\\'
-output_folder = 'D:\Gravity Rush 2\gnf\\'
+header = 'GNF'.encode()
+folder = 'E:\GRR\gcd\\'
+output_folder = 'E:\GRR\png\\'
 
 files = []
 # r=root, d=directories, f = files
 for r, d, f in os.walk(folder):
     for file in f:
-        if '.gcdv' in file:
+        if '.gcdm' in file:
+            pass
+        elif '.gcdv' in file:
             files.append(os.path.join(r, file))
+        elif '.gcd' in file:
+            files.append(os.path.join(r, file))
+
 
 for file_path in files:
     with open(r'%s' % (file_path), 'rb') as f:
@@ -26,7 +31,7 @@ for file_path in files:
             body = data[header_index: next_header_index]
 
             while body is not None:
-                with open(r"%s%s_%d.gnf" % (output_folder, os.path.basename(f.name), count), "wb") as output:
+                with open(r"%s%s_%d.gnf" % (output_folder, os.path.basename(f.name).split('.')[0], count), "wb") as output:
                     output.write(body)
                     print("Exported #%d" % count)
                     count += 1
@@ -44,7 +49,7 @@ for file_path in files:
                           % (header_index, len(data)))
                     body = data[header_index: len(data)]
                     #print("body: %s" % body)
-                    with open(r"%s%s_%d.gnf" % (output_folder, os.path.basename(f.name), count), "wb") as output:
+                    with open(r"%s%s_%d.gnf" % (output_folder, os.path.basename(f.name).split('.')[0], count), "wb") as output:
                         output.write(body)
                         print("Exported #%d" % count)
                         count += 1
