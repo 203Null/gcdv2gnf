@@ -1,7 +1,7 @@
 import os
 header = 'GNF'.encode()
 folder = 'E:\GRR\gcd\\'
-output_folder = 'E:\GRR\png\\'
+output_folder = 'E:\GRR\gnf\\'
 
 files = []
 # r=root, d=directories, f = files
