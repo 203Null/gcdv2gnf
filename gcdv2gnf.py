@@ -1,5 +1,5 @@
 import os
-header = 'GNF'.encode()
+header = 0x474E4620F8000000.to_bytes(8,'big')
 folder = 'E:\GRR\gcd\\'
 output_folder = 'E:\GRR\gnf\\'
 
